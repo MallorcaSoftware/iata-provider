@@ -16,7 +16,19 @@ public class MemoryIataStorageImpl implements IataStorage {
     private List<IataData> iataDataList = new ArrayList<>();
     private Map<String, IataData> iataDataByIataCode = new HashMap<>();
 
+    public MemoryIataStorageImpl() {
+
+    }
+
     public MemoryIataStorageImpl(List<IataData> iataDataList) {
+        setIataDataList(iataDataList);
+    }
+
+    public List<IataData> getIataDataList() {
+        return iataDataList;
+    }
+
+    public void setIataDataList(List<IataData> iataDataList) {
         this.iataDataList = iataDataList;
 
         init();
@@ -28,6 +40,7 @@ public class MemoryIataStorageImpl implements IataStorage {
     }
 
     private void init() {
+        iataDataByIataCode.clear();
         for (IataData iataData : iataDataList) {
             iataDataByIataCode.put(iataData.getIata(), iataData);
         }

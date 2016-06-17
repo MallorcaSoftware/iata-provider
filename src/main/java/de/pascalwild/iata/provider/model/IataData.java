@@ -67,4 +67,17 @@ public class IataData {
     public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
+
+    @Override
+    public String toString() {
+        return "IataData{" +
+                "name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", iata='" + iata + '\'' +
+                ", icao='" + icao + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
 }
