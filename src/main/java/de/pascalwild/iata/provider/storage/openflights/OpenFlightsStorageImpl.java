@@ -15,15 +15,24 @@ import java.util.Scanner;
 public class OpenFlightsStorageImpl extends MemoryIataStorageImpl {
 
     public OpenFlightsStorageImpl(String airportDatFilePath) {
-        setIataDataList(processFile(airportDatFilePath));
+        setIataDataList(processFileName(airportDatFilePath));
     }
 
-    private List<IataData> processFile(String fileName) {
-        List<IataData> iataDataList = new ArrayList<>();
-        String cvsSplitBy = ",";
+    public OpenFlightsStorageImpl(File file) {
+        setIataDataList(processFile(file));
+    }
+
+    private List<IataData> processFileName(String fileName) {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(fileName).getFile());
 
+        return processFile(file);
+
+    }
+
+    private List<IataData> processFile(File file) {
+        List<IataData> iataDataList = new ArrayList<>();
+        String cvsSplitBy = ",";
         try (Scanner scanner = new Scanner(file)) {
 
             while (scanner.hasNextLine()) {
@@ -63,6 +72,5 @@ public class OpenFlightsStorageImpl extends MemoryIataStorageImpl {
         }
 
         return iataDataList;
-
     }
 }
