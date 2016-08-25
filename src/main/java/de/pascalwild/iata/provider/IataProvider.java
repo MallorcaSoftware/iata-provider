@@ -17,4 +17,8 @@ public class IataProvider {
     public IataData getIataDataByIataCode(String iataCode) {
         return iataStorage.getIataDataByIataCode(iataCode);
     }
+
+    public IataData getNearestByLatLng(float lat, float lng) {
+        return iataStorage.getNearestByLatLng(lat, lng);
+    }
 }

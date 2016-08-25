@@ -7,4 +7,6 @@ import de.pascalwild.iata.provider.model.IataData;
  */
 public interface IataStorage {
     IataData getIataDataByIataCode(String iataCode);
+
+    IataData getNearestByLatLng(float lat, float lng);
 }
